@@ -1,0 +1,90 @@
+<div class="col-md-12" style="padding-top:12px; ">
+    <div class="col-md-12">
+        <div class="container-fluid">              
+            <div class="col-sm-12">
+                <div class="row" >
+                    <label ><h5>ค้นหาผู้ใช้งาน</h5></label>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <!--Start Search Box-->
+                <div class="row" >
+                    <div class="col-md-6"  >
+                        <div class="form-group">
+                            <label >ชื่อ-นามสกุล</label>
+                            <input type="text" class="form-control"  name="searchName"  id="searchName">
+                        </div>                                    
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label >หน่วยงาน</label>
+                                <select class="form-control" name="searchDept" id="searchDept" >
+                                    <option >กรุณาเลือก</option>
+                                </select>
+                        </div>
+                    </div>   
+                </div>
+                <div class="row" >
+                    <div class="col-md-6"  >
+                        <div class="form-group">
+                        <label>สถานะ</label>
+                        <select class="form-control" name="searchStatus" id="searchStatus" >
+                            <option [value]="0" >กรุณาเลือก</option>
+                            <option [value]="1">ใช้งาน</option>
+                            <option [value]="2">ไม่ใช้งาน</option>
+                        </select>
+                        </div>     
+                    </div>   
+                </div>
+                <div class="row" >
+                    <div class="col-md-12">
+                        <button type="button" class="btn btn-primary">ค้นหา</button>&nbsp;
+                        <button type="submit" class="btn btn-secondary">ล้างค่า</button>
+                    </div>
+                </div>
+                <!-- End Search Box-->
+                <!-- Start Result Box -->
+                <div class="row" style="padding-top: 20px;">
+                        <div class="col-sm-12">
+                        <table class="table">
+                                <thead class="thead-light">
+                                  <tr>
+                                    <th scope="col">ชื่อผู้ใช้งาน</th>
+                                    <th scope="col">ชื่อ-นามสกุล</th>
+                                    <th scope="col">ตำแหน่ง</th>
+                                    <th scope="col">กอง/สำนัก</th>
+                                    <th scope="col">สถานะ</th>
+                                    <th scope="col"></th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                <tr *ngFor="let item of comjList">
+                                    <td></td><td></td><td></td><td></td><td></td><td>
+                                      <div class="btn-group">
+                                          <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            ดำเนินการ
+                                          </button>
+                                          <div class="dropdown-menu">
+                                            <button type="button" class="dropdown-item" (click)="showModal(item.getComjId)" >รายละเอียด</button>
+                                            <button class="dropdown-item" (click)="showModalEditComj(item.getComjId)" href="#">แก้ไข</button>
+                                            <button class="dropdown-item" (click)="resetPassword(item.getComjId)" href="#">รีเซ็ตรหัสผ่าน</button>
+                                          </div>
+                                        </div>
+                                  </td>
+                                </tr>
+                                </tbody>
+                              </table>
+                              </div>    
+                </div>
+                <!-- End Result Box -->
+            </div>
+        </div>                  
+    </div>
+</div>
+
+
+<!--
+<app-modal-detail [refComjId]="refComjId"></app-modal-detail>
+<app-new-comj></app-new-comj>
+<app-verify></app-verify>
+-->
