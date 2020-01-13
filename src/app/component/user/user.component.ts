@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MasterService } from '../../service/master.service';
 
 @Component({
   selector: 'app-user',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserComponent implements OnInit {
 
-  constructor() { }
+  divisions;
+  constructor(private masterService: MasterService) { }
 
   ngOnInit() {
+    this.divisions = this.masterService.getDivn();
   }
+
+
 
 }

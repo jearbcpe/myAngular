@@ -19,7 +19,12 @@
                         <div class="form-group">
                             <label >หน่วยงาน</label>
                                 <select class="form-control" name="searchDept" id="searchDept" >
-                                    <option >กรุณาเลือก</option>
+
+                                    <option  [value]="0">เลือกทั้งหมด</option>
+                                    <option  *ngFor="let division of divisions" [value]="division.divnId">
+                                        {{division.divnName}}
+                                    </option>
+
                                 </select>
                         </div>
                     </div>   
