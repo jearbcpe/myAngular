@@ -1,0 +1,39 @@
+  <!-- Start Result Box -->
+  <div class="row" style="padding-top: 20px;">
+    <div class="col-sm-12">
+    <table class="table">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">ชื่อผู้ใช้งาน</th>
+                <th scope="col">ชื่อ-นามสกุล</th>
+                <th scope="col">ตำแหน่ง</th>
+                <th scope="col">กอง/สำนัก</th>
+                <th scope="col">สถานะ</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let user of users">
+                <td>{{user.username}}</td>
+                <td>{{user.fullName}}</td>
+                <td>{{user.position}}</td>
+                <td>{{user.divnName}}</td>
+                <td>{{user.flag=='1' ? "ใช้งาน" : "ไม่ใช้งาน"}}</td>
+                <td>
+                  <div class="btn-group">
+                      <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        ดำเนินการ
+                      </button>
+                      <div class="dropdown-menu">
+                        <button type="button" class="dropdown-item"  >รายละเอียด</button>
+                        <button class="dropdown-item" href="#">แก้ไข</button>
+                        <button class="dropdown-item" href="#">รีเซ็ตรหัสผ่าน</button>
+                      </div>
+                    </div>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+          </div>    
+</div>
+<!-- End Result Box -->

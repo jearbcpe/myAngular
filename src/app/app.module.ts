@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,6 +10,7 @@ import { HomeComponent } from './component/home/home.component';
 import { UserComponent } from './component/user/user.component';
 
 import { Routes,RouterModule } from '@angular/router';
+import { TbUserComponent } from './component/tb-user/tb-user.component';
 
 
 const appRoutes: Routes = [
@@ -22,12 +24,14 @@ const appRoutes: Routes = [
     AppComponent,
     MainMenuComponent,
     HomeComponent,
-    UserComponent
+    UserComponent,
+    TbUserComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [],
