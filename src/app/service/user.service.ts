@@ -13,8 +13,7 @@ export class UserService {
     this.http.post("http://localhost/ws/service.php/searchUser", cond ,{ responseType: 'json' }).subscribe((data) => {
       for (let x in data)
       {
-        users.push
-        ({
+        users.push({
           "userId" : data[x]['userId'],
           "username" : data[x]['username'],
           "fullName" : data[x]['fullName'],

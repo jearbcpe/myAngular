@@ -1,7 +1,9 @@
 import { Component, OnInit , ViewChild } from '@angular/core';
 import { MasterService } from '../../service/master.service';
 import { TbUserComponent } from '../tb-user/tb-user.component';
+
 import { FormBuilder } from '@angular/forms';
+
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -10,6 +12,7 @@ import { FormBuilder } from '@angular/forms';
 export class UserComponent implements OnInit {
 
   @ViewChild(TbUserComponent,{static: false}) tbUser: TbUserComponent ; 
+
   searchForm
   divisions;
   cond;

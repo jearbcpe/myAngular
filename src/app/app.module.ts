@@ -11,6 +11,7 @@ import { UserComponent } from './component/user/user.component';
 
 import { Routes,RouterModule } from '@angular/router';
 import { TbUserComponent } from './component/tb-user/tb-user.component';
+import { UserDetailComponent } from './component/user-detail/user-detail.component';
 
 
 const appRoutes: Routes = [
@@ -25,7 +26,8 @@ const appRoutes: Routes = [
     MainMenuComponent,
     HomeComponent,
     UserComponent,
-    TbUserComponent
+    TbUserComponent,
+    UserDetailComponent
   ],
   imports: [
     BrowserModule,
