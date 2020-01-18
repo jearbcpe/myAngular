@@ -1,5 +1,7 @@
 import { Component, OnInit , ViewChild } from '@angular/core';
 import { ElementRef } from '@angular/core';
+import { UserService } from '../../service/user.service';
+import { User } from 'src/app/class/user';
 declare var jQuery:any;
 
 @Component({
@@ -10,16 +12,19 @@ declare var jQuery:any;
 export class UserDetailComponent implements OnInit {
 
   @ViewChild('myModal', {static: false}) public modalComjDetail:ElementRef;
-  userId;
-  constructor() { }
+  // = Array();
+  user:User;
+  //fullName : string = "";
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
   }
 
-  showModal(userId)
+   showModal(userId)
   {
+    //var user : User;
+    this.user = this.userService.getUserDetail(JSON.stringify({"userId" : userId}));
     jQuery(this.modalComjDetail.nativeElement).modal('show'); 
-    this.userId = userId;
   }
 
 }

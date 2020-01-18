@@ -1,7 +1,7 @@
 import { Component, OnInit , ViewChild } from '@angular/core';
 import { UserService } from '../../service/user.service';
 import { UserDetailComponent } from '../user-detail/user-detail.component';
-
+import { User } from 'src/app/class/user';
 @Component({
   selector: 'app-tb-user',
   templateUrl: './tb-user.component.html',
@@ -10,7 +10,7 @@ import { UserDetailComponent } from '../user-detail/user-detail.component';
 export class TbUserComponent implements OnInit {
 
   @ViewChild(UserDetailComponent ,{static: false}) public modalUserDetail;
-  users;
+  userList:Array<User>;
 
   constructor(private userService: UserService) { }
 
@@ -18,7 +18,7 @@ export class TbUserComponent implements OnInit {
   }
 
   searchUser(cond){
-    this.users = this.userService.searchUser(cond);
+    this.userList = this.userService.searchUser(cond);
   }
   
   showDetailModal(userId)

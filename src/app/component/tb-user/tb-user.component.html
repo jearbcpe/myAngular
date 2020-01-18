@@ -13,12 +13,12 @@
               </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let user of users">
-                <td>{{user.username}}</td>
-                <td>{{user.fullName}}</td>
-                <td>{{user.position}}</td>
-                <td>{{user.divnName}}</td>
-                <td>{{user.flag=='1' ? "ใช้งาน" : "ไม่ใช้งาน"}}</td>
+            <tr *ngFor="let user of userList">
+                <td>{{user.getUserName}}</td>
+                <td>{{user.getFullName}}</td>
+                <td>{{user.getPosition}}</td>
+                <td>{{user.getDivnName}}</td>
+                <td>{{user.getStatus=='1' ? "ใช้งาน" : "ไม่ใช้งาน"}}</td>
                 <td>
                   <div class="btn-group">
                       <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

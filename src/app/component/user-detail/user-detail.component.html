@@ -3,13 +3,46 @@
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">รายละเอียดคณะกรรมการศูนย์ยุติธรรมชุมชน{{refComjId}}</h5>
+        <h5 class="modal-title" id="exampleModalLabel">รายละเอียดผู้ใช้งาน</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        {{userId}}
+      <div class="modal-body" *ngIf="user">
+        <div class="col-md-12" style="padding-top:12px; ">
+          <div class="row"  >
+            <div class="col-md-12"  >
+                <div class="col-md-12" > <h3>{{user.getFullName}}</h3></div>
+            </div>
+          </div>
+          <div class="row" style="padding-top: 10px;">   
+            <div class="col-md-12"  >
+                    <label class="col-md-4"><b>ID</b></label> 
+                    <label  class="col-md-8" class="col-md-6" >{{user.getUserId}}</label>
+            </div>  
+            <div class="col-md-12"  >
+              <label class="col-md-4"><b>ชื่อผู้ใช้งาน</b></label> 
+              <label  class="col-md-8" class="col-md-6" >{{user.getUserName}}</label>
+            </div>  
+            <div class="col-md-12"  >
+              <label class="col-md-4"><b>ชื่อ-นามสกุล</b></label> 
+              <label  class="col-md-8" class="col-md-6" >{{user.getFullName}}</label>
+            </div>  
+            <div class="col-md-12"  >
+              <label class="col-md-4"><b>ตำแหน่ง</b></label> 
+              <label  class="col-md-8" class="col-md-6" >{{user.getPosition}}</label>
+            </div>  
+            <div class="col-md-12"  >
+              <label class="col-md-4"><b>กอง/สำนัก</b></label> 
+              <label  class="col-md-8" class="col-md-6" >{{user.getDivnName}}</label>
+            </div>  
+            <div class="col-md-12"  >
+              <label class="col-md-4"><b>สถานะ</b></label> 
+              <label  class="col-md-8" class="col-md-6" >{{user.getStatus=='1' ? "ใช้งาน" : "ไม่ใช้งาน"}}</label>
+            </div> 
+          </div>  
+       
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
