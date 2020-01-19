@@ -13,13 +13,13 @@
                     <div class="col-md-6"  >
                         <div class="form-group">
                             <label >ชื่อ-นามสกุล</label>
-                            <input type="text" class="form-control"  name="searchName" id="searchName" formControlName="name">
+                            <input type="text" class="form-control" formControlName="name">
                         </div>                                    
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label >หน่วยงาน</label>
-                                <select class="form-control" name="searchDept" id="searchDept" formControlName="divn">
+                                <select class="form-control" formControlName="divn">
 
                                     <option  [value]="0">เลือกทั้งหมด</option>
                                     <option  *ngFor="let division of divisions" [value]="division.divnId">
@@ -34,7 +34,7 @@
                     <div class="col-md-6"  >
                         <div class="form-group">
                         <label>สถานะ</label>
-                        <select class="form-control" name="searchStatus" id="searchStatus" formControlName="flag" >
+                        <select class="form-control" formControlName="flag" >
                             <option [value]="0" >กรุณาเลือก</option>
                             <option [value]="1">ใช้งาน</option>
                             <option [value]="2">ไม่ใช้งาน</option>
@@ -50,14 +50,21 @@
                 </div>
                 </form>
                 <!-- End Search Box-->
-
+                <!-- Start New User-->
+                <div class="row" style="padding-top: 20px;">
+                    <div class="col-sm-12">
+                        <button type="button" (click)="showModalNewComj()" class="btn btn-success float-right">
+                            + เพิ่มคณะกรรมการฯ</button>
+                    </div>   
+                </div>
+                <!-- End New User-->
               <app-tb-user></app-tb-user>
-
             </div>
         </div>                  
     </div>
 </div>
 
+<app-save-user></app-save-user>
 
 
 <!--

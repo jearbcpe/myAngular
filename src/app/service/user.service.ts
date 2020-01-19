@@ -29,21 +29,25 @@ export class UserService {
 
   public getUserDetail(userId) 
   {
-    var users = [];
     var user = new User();
     this.http.post("http://localhost/ws/service.php/getUserDetail", userId ,{ responseType: 'json' }).subscribe((data) => {
-      
-      //alert(data['userId'])
+
       user.setUserId = data['userId'];
       user.setUserName = data['username'];
       user.setFullName = data['fullName'];
       user.setPosition = data['position'];
       user.setDivnName = data['divnName'];
       user.setStatus = data['flag'];
-      users.push(user);
+
     });
-   
     return user;
    
   }
+
+  public newUser(userData)
+  {
+    return this.http.post("http://localhost/ws/service.php/newUser", userData ,{ responseType: 'json' })
+  }
+
+
 }

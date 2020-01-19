@@ -1,6 +1,7 @@
 import { Component, OnInit , ViewChild } from '@angular/core';
 import { MasterService } from '../../service/master.service';
 import { TbUserComponent } from '../tb-user/tb-user.component';
+import { SaveUserComponent } from '../save-user/save-user.component';
 
 import { FormBuilder } from '@angular/forms';
 
@@ -12,12 +13,15 @@ import { FormBuilder } from '@angular/forms';
 export class UserComponent implements OnInit {
 
   @ViewChild(TbUserComponent,{static: false}) tbUser: TbUserComponent ; 
-
-  searchForm
+  @ViewChild(SaveUserComponent ,{static: false}) saveUserComponent : SaveUserComponent;
+  searchForm;
   divisions;
   cond;
   name : string = "";
-  constructor(private masterService: MasterService,private formBuilder: FormBuilder) { 
+  constructor(
+    private masterService: MasterService,
+    private formBuilder: FormBuilder
+    ) { 
     this.searchForm = this.formBuilder.group({
       name: '',
       divn: '0',
@@ -31,6 +35,11 @@ export class UserComponent implements OnInit {
 
   onSubmitSearch(searchData){
     this.tbUser.searchUser(JSON.stringify(searchData));
+  }
+
+  showModalNewComj()
+  {
+    this.saveUserComponent.showModal();
   }
 
 }

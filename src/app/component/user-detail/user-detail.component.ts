@@ -11,7 +11,7 @@ declare var jQuery:any;
 })
 export class UserDetailComponent implements OnInit {
 
-  @ViewChild('myModal', {static: false}) public modalComjDetail:ElementRef;
+  @ViewChild('modalUserDetail', {static: false}) public modalComjDetail:ElementRef;
   // = Array();
   user:User;
   //fullName : string = "";
@@ -20,9 +20,7 @@ export class UserDetailComponent implements OnInit {
   ngOnInit() {
   }
 
-   showModal(userId)
-  {
-    //var user : User;
+   showModal(userId){
     this.user = this.userService.getUserDetail(JSON.stringify({"userId" : userId}));
     jQuery(this.modalComjDetail.nativeElement).modal('show'); 
   }

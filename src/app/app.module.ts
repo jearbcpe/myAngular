@@ -12,6 +12,7 @@ import { UserComponent } from './component/user/user.component';
 import { Routes,RouterModule } from '@angular/router';
 import { TbUserComponent } from './component/tb-user/tb-user.component';
 import { UserDetailComponent } from './component/user-detail/user-detail.component';
+import { SaveUserComponent } from './component/save-user/save-user.component';
 
 
 const appRoutes: Routes = [
@@ -27,7 +28,8 @@ const appRoutes: Routes = [
     HomeComponent,
     UserComponent,
     TbUserComponent,
-    UserDetailComponent
+    UserDetailComponent,
+    SaveUserComponent
   ],
   imports: [
     BrowserModule,
