@@ -39,7 +39,7 @@ export class UserComponent implements OnInit {
 
   showModalNewComj()
   {
-    this.saveUserComponent.showModal();
+    this.saveUserComponent.showModal('new');
   }
 
 }

@@ -8,14 +8,18 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-        <form [formGroup]="saveUserForm" (ngSubmit)="onSubmitSave(saveUserForm.value)">
+        <form #formUser="ngForm" (ngSubmit)="onSubmitSave(formUser)">
         <div class="modal-body">
             <div class="col-md-12" style="padding-top:12px; ">
                 <div class="row" >
                     <div class="col-md-6"  >
                         <div class="form-group">
                             <label>ชื่อ-นามสกุล</label>
-                            <input type="text" formControlName="fullName" class="form-control">
+                            <input type="text" [(ngModel)]="fullName" name="fullName" class="form-control"
+                            #localFullName="ngModel" 
+                            [ngClass] = "{'is-invalid' : localFullName.errors && localFullName.touched}"
+                            required
+                            >
                             <div class="invalid-feedback">โปรดระบุชื่อ-นามสกุล</div>
                         </div>
                     </div>    
@@ -23,7 +27,11 @@
                     <div class="col-md-6"  >
                         <div class="form-group">
                             <label>ตำแหน่ง</label>
-                            <input type="text" formControlName="position" class="form-control">
+                            <input type="text" [(ngModel)]="position" name="position" class="form-control"
+                            #localPosition="ngModel" 
+                            [ngClass] = "{'is-invalid' : localPosition.errors && localPosition.touched }"
+                            required
+                            >
                             <div class="invalid-feedback">โปรดระบุตำแหน่ง</div>
                         </div>                                    
                     </div>
@@ -32,7 +40,11 @@
                     <div class="col-md-6"  >
                         <div class="form-group">
                             <label>หน่วยงาน</label>
-                            <select class="form-control" formControlName="divn">
+                            <select [(ngModel)]="divn" name="divn" class="form-control" 
+                            #localDivn="ngModel" 
+                            [ngClass] = "{'is-invalid' : localDivn.errors && localDivn.touched}"
+                            pattern="[^0]+"
+                            >
 
                                 <option  [value]="0">เลือกทั้งหมด</option>
                                 <option  *ngFor="let division of divisions" [value]="division.divnId">
@@ -46,8 +58,12 @@
                     <div class="col-md-6"  >
                         <div class="form-group">
                             <label>สถานะ</label>
-                            <select class="form-control" formControlName="status" >
-                                <option [value]="0" >กรุณาเลือก</option>
+                            <select [(ngModel)]="status" name="status" class="form-control" 
+                            #localStatus="ngModel" 
+                            [ngClass] = "{'is-invalid' : localStatus.errors && localStatus.touched}"
+                            pattern="[^0]+"
+                            >
+                                <option [value]="0">กรุณาเลือก</option>
                                 <option [value]="1">ใช้งาน</option>
                                 <option [value]="2">ไม่ใช้งาน</option>
                             </select>
@@ -59,7 +75,11 @@
                     <div class="col-md-6"  >
                         <div class="form-group">
                             <label>Username</label>
-                            <input type="text" formControlName="username" class="form-control">
+                            <input type="text" [(ngModel)]="username" name="username" class="form-control"
+                            #localUsername="ngModel" 
+                            [ngClass] = "{'is-invalid' : localUsername.errors && localUsername.touched }"
+                            required
+                            >
                             <div class="invalid-feedback">โปรดระบุชื่อผู้ใช้งาน</div>
                         </div>                                    
                     </div>
@@ -68,15 +88,23 @@
                     <div class="col-md-6"  >
                         <div class="form-group">
                             <label>Password</label>
-                            <input type="password" formControlName="password" class="form-control">
+                            <input type="password"  [(ngModel)]="password" name="password"  class="form-control"
+                            #localPassword="ngModel" 
+                            [ngClass] = "{'is-invalid' : (localPassword.errors && localPassword.touched)}"
+                            [required]="this.mode=='new'"
+                            >
                             <div class="invalid-feedback">โปรดระบุรหัสผ่าน</div>
                         </div>                                    
                     </div>
                     <div class="col-md-6"  >
                         <div class="form-group">
                             <label>Re-Password</label>
-                            <input type="password" formControlName="rePassword" class="form-control">
-                            <div class="invalid-feedback">โปรดระบุรหัสผ่าน</div>
+                            <input type="password"  [(ngModel)]="rePassword" name="rePassword"  class="form-control"
+                            #localRePassword="ngModel" 
+                            [ngClass] = "{'is-invalid' : (localRePassword.errors && localRePassword.touched && this.mode == 'new') || ((password != rePassword && rePassword != '') ) }"
+                            [required]="this.mode=='new'" 
+                            >
+                            <div class="invalid-feedback">โปรดระบุรหัสผ่านให้ตรงกัน</div>
                         </div>                                    
                     </div>
                 </div>
@@ -84,7 +112,7 @@
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Save changes</button>
+            <button type="submit" class="btn btn-primary" [disabled]="!formUser.form.valid || password != rePassword">Save changes</button>
         </div>
         </form> 
      

@@ -44,9 +44,17 @@ export class UserService {
    
   }
 
-  public newUser(userData)
+  public newUser(userData:User)
   {
-    return this.http.post("http://localhost/ws/service.php/newUser", userData ,{ responseType: 'json' })
+    var jsonData = {  "fullName":userData.getFullName,
+                      "position":userData.getPosition,
+                      "divn":userData.getDivnId,
+                      "status":userData.getStatus,
+                      "username":userData.getUserName,
+                      "password":userData.getPassword
+                    };
+                   
+    return this.http.post("http://localhost/ws/service.php/newUser", JSON.stringify(jsonData) ,{ responseType: 'json' })
   }
 
 

@@ -1,9 +1,11 @@
 export class User {
     private userId : number;
     private username : string;
+    private password : string;
     private fullName : string;
     private position : string;
     private divnName : string;
+    private divnId : number;
     private status : string;
 
     set setUserId(value:number) {
@@ -19,6 +21,13 @@ export class User {
     }
     get getUserName(): string{
         return this.username;
+    }
+
+    set setPassword(value:string) {
+        this.password = value;
+    }
+    get getPassword(): string{
+        return this.password;
     }
 
     set setFullName(value:string) {
@@ -40,6 +49,13 @@ export class User {
     }
     get getDivnName(): string{
         return this.divnName;
+    }
+
+    set setDivnId(value:number) {
+        this.divnId = value;
+    }
+    get getDivnId(): number{
+        return this.divnId;
     }
 
     set setStatus(value:string) {
