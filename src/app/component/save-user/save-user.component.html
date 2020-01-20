@@ -77,9 +77,11 @@
                             <input type="text" [(ngModel)]="username" name="username" class="form-control"
                             #localUsername="ngModel" 
                             [ngClass] = "{'is-invalid' : localUsername.errors && localUsername.touched }"
+                            maxlength="12"
+                            minlength="4"
                             required
                             >
-                            <div class="invalid-feedback">โปรดระบุชื่อผู้ใช้งาน</div>
+                            <div class="invalid-feedback">โปรดระบุชื่อผู้ใช้งานอย่างน้อย 4 ตัวอักษร</div>
                         </div>                                    
                     </div>
                 </div>
@@ -90,9 +92,11 @@
                             <input type="password"  [(ngModel)]="password" name="password"  class="form-control"
                             #localPassword="ngModel" 
                             [ngClass] = "{'is-invalid' : (localPassword.errors && localPassword.touched)}"
+                            maxlength="12"
+                            minlength="4"
                             [required]="this.mode=='new'"
                             >
-                            <div class="invalid-feedback">โปรดระบุรหัสผ่าน</div>
+                            <div class="invalid-feedback">โปรดระบุรหัสผ่านอย่างน้อย 4 ตัวอักษร</div>
                         </div>                                    
                     </div>
                     <div class="col-md-6"  >
@@ -101,6 +105,8 @@
                             <input type="password"  [(ngModel)]="rePassword" name="rePassword"  class="form-control"
                             #localRePassword="ngModel" 
                             [ngClass] = "{'is-invalid' : (localRePassword.errors && localRePassword.touched && this.mode == 'new') || ((password != rePassword && rePassword != '') ) }"
+                            maxlength="12"
+                            minlength="4"
                             [required]="this.mode=='new'" 
                             >
                             <div class="invalid-feedback">โปรดระบุรหัสผ่านให้ตรงกัน</div>
