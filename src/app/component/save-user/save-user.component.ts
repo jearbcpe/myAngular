@@ -3,8 +3,7 @@ import { MasterService } from '../../service/master.service';
 import { UserService } from '../../service/user.service';
 import { ElementRef } from '@angular/core';
 
-import { FormBuilder } from '@angular/forms';
-
+import { FormBuilder} from '@angular/forms';
 declare var jQuery:any;
 
 @Component({
@@ -17,6 +16,7 @@ export class SaveUserComponent implements OnInit {
   @ViewChild('modalSaveUser', {static: false}) public modalSaveUser:ElementRef;
   saveUserForm;
   divisions;
+  validclass:boolean;
   constructor(private masterService: MasterService,private userService: UserService,private formBuilder: FormBuilder) { 
 
     this.saveUserForm = this.formBuilder.group({
@@ -62,7 +62,7 @@ export class SaveUserComponent implements OnInit {
         alert("Session ของคุณหมดอายุ"); 
       */
     });
-    
   }
+
 
 }

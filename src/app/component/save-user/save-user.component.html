@@ -15,7 +15,7 @@
                     <div class="col-md-6"  >
                         <div class="form-group">
                             <label>ชื่อ-นามสกุล</label>
-                            <input type="text" formControlName="fullName" class="form-control">
+                            <input type="text" formControlName="fullName" class="form-control" >
                             <div class="invalid-feedback">โปรดระบุชื่อ-นามสกุล</div>
                         </div>
                     </div>    
@@ -33,12 +33,10 @@
                         <div class="form-group">
                             <label>หน่วยงาน</label>
                             <select class="form-control" formControlName="divn">
-
                                 <option  [value]="0">เลือกทั้งหมด</option>
                                 <option  *ngFor="let division of divisions" [value]="division.divnId">
                                     {{division.divnName}}
                                 </option>
-
                             </select>
                             <div class="invalid-feedback">โปรดระบุหน่วยงาน</div>
                         </div>                                    
@@ -76,7 +74,7 @@
                         <div class="form-group">
                             <label>Re-Password</label>
                             <input type="password" formControlName="rePassword" class="form-control">
-                            <div class="invalid-feedback">โปรดระบุรหัสผ่าน</div>
+                            <div class="invalid-feedback">โปรดระบุรหัสผ่านอีกครั้ง</div>
                         </div>                                    
                     </div>
                 </div>
@@ -84,7 +82,7 @@
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Save changes</button>
+            <button type="submit" class="btn btn-primary" [disabled]="!saveUserForm.valid">Save changes</button>
         </div>
         </form> 
      
