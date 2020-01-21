@@ -26,7 +26,7 @@
                       </button>
                       <div class="dropdown-menu">
                         <button type="button" class="dropdown-item" (click)="showDetailModal(user.userId)" >รายละเอียด</button>
-                        <button class="dropdown-item" href="#">แก้ไข</button>
+                        <button class="dropdown-item" href="#" (click)="showModalEditUser(user.userId)">แก้ไข</button>
                         <button class="dropdown-item" href="#">รีเซ็ตรหัสผ่าน</button>
                       </div>
                     </div>
@@ -39,3 +39,4 @@
 <!-- End Result Box -->
 
 <app-user-detail></app-user-detail>
+<app-save-user></app-save-user>

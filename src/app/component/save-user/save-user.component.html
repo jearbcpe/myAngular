@@ -8,14 +8,14 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-        <form #formUser="ngForm" (ngSubmit)="onSubmitSave(formUser)">
-        <div class="modal-body">
-            <div class="col-md-12" style="padding-top:12px; ">
+        <form #formUser="ngForm"   (ngSubmit)="onSubmitSave(formUser)">
+        <div class="modal-body" >
+            <div class="col-md-12" style="padding-top:12px;"  >
                 <div class="row" >
-                    <div class="col-md-6"  >
-                        <div class="form-group">
+                    <div class="col-md-6"   >
+                        <div class="form-group"  >
                             <label>ชื่อ-นามสกุล</label>
-                            <input type="text" [(ngModel)]="fullName" name="fullName" class="form-control"
+                            <input type="text" [(ngModel)]="fullName" name="fullName" class="form-control" 
                             #localFullName="ngModel" 
                             [ngClass] = "{'is-invalid' : localFullName.errors && localFullName.touched}"
                             required
@@ -27,7 +27,7 @@
                     <div class="col-md-6"  >
                         <div class="form-group">
                             <label>ตำแหน่ง</label>
-                            <input type="text" [(ngModel)]="position" name="position" class="form-control"
+                            <input type="text" [(ngModel)]="position" name="position" class="form-control" 
                             #localPosition="ngModel" 
                             [ngClass] = "{'is-invalid' : localPosition.errors && localPosition.touched }"
                             required
@@ -38,7 +38,7 @@
                 </div>
                 <div class="row" >
                     <div class="col-md-6"  >
-                        <div class="form-group">
+                        <div class="form-group" >
                             <label>หน่วยงาน</label>
                             <select [(ngModel)]="divn" name="divn" class="form-control" 
                             #localDivn="ngModel" 
@@ -46,8 +46,8 @@
                             pattern="[^0]+"
                             >
 
-                                <option  [value]="0">เลือกทั้งหมด</option>
-                                <option  *ngFor="let division of divisions" [value]="division.divnId">
+                                <option [value]="0">เลือกทั้งหมด</option>
+                                <option *ngFor="let division of divisions" [value]="division.divnId">
                                     {{division.divnName}}
                                 </option>
                             </select>
@@ -80,6 +80,7 @@
                             maxlength="12"
                             minlength="4"
                             required
+                            [disabled]="this.mode =='edit'"
                             >
                             <div class="invalid-feedback">โปรดระบุชื่อผู้ใช้งานอย่างน้อย 4 ตัวอักษร</div>
                         </div>                                    

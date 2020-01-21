@@ -5,6 +5,7 @@ import { User } from 'src/app/class/user';
 import { ElementRef } from '@angular/core';
 
 import {NgForm} from '@angular/forms';
+import { ThrowStmt } from '@angular/compiler';
 
 declare var jQuery:any;
 
@@ -19,6 +20,13 @@ export class SaveUserComponent implements OnInit {
   @ViewChild('formUser', {static: false}) public formUser:NgForm;
   divisions;
   mode;
+  userIdForEdit;
+
+  fullName;
+  position;
+  divn;
+  status;
+  username;
   //password;
   //rePassword;
   constructor(private masterService: MasterService,private userService: UserService) {}
@@ -27,12 +35,39 @@ export class SaveUserComponent implements OnInit {
     this.divisions = this.masterService.getDivn();
   }
 
-  showModal(mode){
+  showModal(mode,userId = null){
     this.mode = mode;
-    this.formUser.resetForm();
-    this.formUser.controls['divn'].setValue("0");
-    this.formUser.controls['status'].setValue("0");
-    jQuery(this.modalSaveUser.nativeElement).modal('show'); 
+    if(this.mode == "new"){
+      this.formUser.resetForm();
+      this.formUser.controls['divn'].setValue("0");
+      this.formUser.controls['status'].setValue("0");
+      jQuery(this.modalSaveUser.nativeElement).modal('show'); 
+    }
+    else if(this.mode == "edit"){
+      this.formUser.resetForm();
+      this.formUser.controls['divn'].setValue("0");
+      this.formUser.controls['status'].setValue("0");
+      this.initialUserData(userId);
+      this.userIdForEdit = userId;
+      jQuery(this.modalSaveUser.nativeElement).modal('show'); 
+     
+    }
+   
+  }
+
+  initialUserData(userId)
+  {
+    //this.user = this.userService.getUserDetail(userId);
+    
+    this.userService.getUserDetailUnSubscribe(userId).subscribe((data)=>{
+      this.fullName = data['fullName'];
+      this.position = data['position'];
+      this.divn = data['divnId'];
+      this.status = data['flag'];
+      this.username = data['username'];
+    });
+    
+    
   }
 
   onSubmitSave(formObject:NgForm){

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from 'src/app/class/user';
+import { stringify } from 'querystring';
 @Injectable({
   providedIn: 'root'
 })
@@ -29,19 +30,24 @@ export class UserService {
 
   public getUserDetail(userId) 
   {
+    var jsonData = { "userId":userId };
     var user = new User();
-    this.http.post("http://localhost/ws/service.php/getUserDetail", userId ,{ responseType: 'json' }).subscribe((data) => {
+    this.http.post("http://localhost/ws/service.php/getUserDetail", jsonData ,{ responseType: 'json' }).subscribe((data) => {
+        user.setUserId = data['userId'];
+        user.setUserName = data['username'];
+        user.setFullName = data['fullName'];
+        user.setPosition = data['position'];
+        user.setDivnName = data['divnName'];
+        user.setDivnId = data['divnId'];
+        user.setStatus = data['flag'];
+      });
+      return user;
+  }
 
-      user.setUserId = data['userId'];
-      user.setUserName = data['username'];
-      user.setFullName = data['fullName'];
-      user.setPosition = data['position'];
-      user.setDivnName = data['divnName'];
-      user.setStatus = data['flag'];
-
-    });
-    return user;
-   
+  public getUserDetailUnSubscribe(userId) 
+  {
+    var jsonData = { "userId":userId };
+    return this.http.post("http://localhost/ws/service.php/getUserDetail", jsonData ,{ responseType: 'json' });  
   }
 
   public newUser(userData:User)
