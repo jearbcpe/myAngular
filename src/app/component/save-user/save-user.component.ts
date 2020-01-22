@@ -27,8 +27,8 @@ export class SaveUserComponent implements OnInit {
   divn;
   status;
   username;
-  //password;
-  //rePassword;
+  password;
+  
   constructor(private masterService: MasterService,private userService: UserService) {}
 
   ngOnInit() {
@@ -41,6 +41,7 @@ export class SaveUserComponent implements OnInit {
       this.formUser.resetForm();
       this.formUser.controls['divn'].setValue("0");
       this.formUser.controls['status'].setValue("0");
+
       jQuery(this.modalSaveUser.nativeElement).modal('show'); 
     }
     else if(this.mode == "edit"){
@@ -49,6 +50,7 @@ export class SaveUserComponent implements OnInit {
       this.formUser.controls['status'].setValue("0");
       this.initialUserData(userId);
       this.userIdForEdit = userId;
+      
       jQuery(this.modalSaveUser.nativeElement).modal('show'); 
      
     }
@@ -63,7 +65,7 @@ export class SaveUserComponent implements OnInit {
       this.fullName = data['fullName'];
       this.position = data['position'];
       this.divn = data['divnId'];
-      this.status = data['flag'];
+      this.status = (data['flag']=="1" ? "1" : "2");
       this.username = data['username'];
     });
     
@@ -79,8 +81,14 @@ export class SaveUserComponent implements OnInit {
     user.setUserName = formObject.value['username'];
     user.setPassword = formObject.value['password'];
 
+    if(this.mode == "edit")  //for Edit
+      user.setUserId = this.userIdForEdit; 
+               
+      
 
-      this.userService.newUser(user).subscribe((data)=> {
+    if(this.mode == "new"){
+
+      this.userService.saveUser(user,this.mode).subscribe((data)=> {
         if(data["status"]=="success"){
           alert("เพิ่มข้อมูลสำเร็จ");  
           jQuery(this.modalSaveUser.nativeElement).modal('hide');  
@@ -92,6 +100,21 @@ export class SaveUserComponent implements OnInit {
           alert("Session ของคุณหมดอายุ"); 
         */
       });
+
+    }
+    else if(this.mode == "edit"){
+
+      this.userService.saveUser(user,this.mode).subscribe((data)=> {
+        if(data["status"]=="success"){
+          alert("แก้ไขข้อมูลสำเร็จ");  
+          jQuery(this.modalSaveUser.nativeElement).modal('hide');  
+        }
+        else if(data["status"]=="fail")
+          alert("พบข้อผิดพลาด แก้ไขข้อมูลไม่สำเร็จ");  
+      });
+
+    }
+
 
     
   }

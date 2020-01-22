@@ -50,18 +50,27 @@ export class UserService {
     return this.http.post("http://localhost/ws/service.php/getUserDetail", jsonData ,{ responseType: 'json' });  
   }
 
-  public newUser(userData:User)
+  public saveUser(userData:User,mode:string)
   {
     var jsonData = {  "fullName":userData.getFullName,
                       "position":userData.getPosition,
                       "divn":userData.getDivnId,
                       "status":userData.getStatus,
                       "username":userData.getUserName,
-                      "password":userData.getPassword
+                      "password":userData.getPassword,
+                      "userId" : userData.getUserId
                     };
-                   
-    return this.http.post("http://localhost/ws/service.php/newUser", JSON.stringify(jsonData) ,{ responseType: 'json' })
+
+    var strService:string;
+
+    if(mode == "new")
+        strService = "newUser";
+    else if(mode == "edit")
+        strService = "editUser";
+
+    return this.http.post("http://localhost/ws/service.php/"+strService , JSON.stringify(jsonData) ,{ responseType: 'json' })
   }
 
+  
 
 }
