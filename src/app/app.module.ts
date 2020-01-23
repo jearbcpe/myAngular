@@ -13,6 +13,7 @@ import { Routes,RouterModule } from '@angular/router';
 import { TbUserComponent } from './component/tb-user/tb-user.component';
 import { UserDetailComponent } from './component/user-detail/user-detail.component';
 import { SaveUserComponent } from './component/save-user/save-user.component';
+import { VerifyComponent } from './component/verify/verify.component';
 
 
 const appRoutes: Routes = [
@@ -29,7 +30,8 @@ const appRoutes: Routes = [
     UserComponent,
     TbUserComponent,
     UserDetailComponent,
-    SaveUserComponent
+    SaveUserComponent,
+    VerifyComponent
   ],
   imports: [
     BrowserModule,

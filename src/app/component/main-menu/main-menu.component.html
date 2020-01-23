@@ -10,5 +10,20 @@
           <a class="nav-link" [routerLink]="['/user']">จัดการผู้ใช้งาน</a>
         </li>
       </ul>
+      <ul class="nav navbar-toolbar navbar-right navbar-toolbar-right" [ngStyle]="{'display':this.fullName ? 'inline' :'none'}" >
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{this.fullName}}
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown" >
+            <!--
+            <a class="dropdown-item" href="#">ข้อมูลผู้ใช้</a>
+            <a class="dropdown-item" href="#">เปลี่ยนรหัสผ่าน</a>
+            <div class="dropdown-divider"></div>
+            -->
+            <button (click)="onLogout()" class="dropdown-item" href="#">ออกจากระบบ</button>
+          </div>
+        </li>
+      </ul>
     </div>
 </nav>
