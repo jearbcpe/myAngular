@@ -23,7 +23,7 @@ export class MainMenuComponent implements OnInit {
       .subscribe((data)=>{
         if(data["status"]=="success"){
           this.fullName = "";
-          localStorage.removeItem('userFullName');
+          localStorage.removeItem('fullName');
           this.router.navigate(['/']);
         }
       });    
